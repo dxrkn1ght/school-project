@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2rem;
+        }
+        .buttons {
+            margin-bottom: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            background-color: #007BFF;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Teacher List</h1>
+    <div class="buttons">
+        <a href="{% url 'teachers:create' %}"><button>Create Teacher</button></a>
+        <a href="/"><button>Back Home</button></a>
+    </div>
+    <ul>
+        {% for teacher in teachers %}
+            <li>
+                <a href="{% url 'teachers:list' teachers.pk %}">{{ teacher.first_name }} {{ teacher.last_name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

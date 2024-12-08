@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2rem;
+        }
+        .buttons {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            background-color: #007BFF;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .delete {
+            background-color: #DC3545;
+        }
+        .delete:hover {
+            background-color: #b02a37;
+        }
+    </style>
+</head>
+<body>
+    <h1>Teacher Detail</h1>
+    <div class="buttons">
+        <a href="{% url 'teachers:list' %}"><button>Back to List</button></a>
+        <a href="/"><button>Back Home</button></a>
+    </div>
+    <p><strong>First Name:</strong> {{ teacher.first_name }}</p>
+    <p><strong>Last Name:</strong> {{ teacher.last_name }}</p>
+    <p><strong>Subject:</strong> {{ teacher.subject }}</p>
+    <a href="{% url 'students:edit' student.pk %}"><button>Edit</button></a>
+    <a href="{% url 'students:delete' student.pk %}">Delete</a>
+    {% for teacher in teachers %}
+    <a href="{% url 'teachers:detail' object.pk %}">{{ teacher.first_name }} {{ teacher.last_name }}
+
+    </a>
+    {% endfor %}
+</body>
+</html>
